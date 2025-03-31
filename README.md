@@ -23,7 +23,11 @@ This project provides a minimal setup for using Laravel 12 as a backend API. It 
    ```sh
    make init
    ```
-3. Access the API:
+3. Laravel init:
+   ```sh
+   make initLaravel
+   ```
+4. Access the API:
    - `https://localhost/api` → API response
    - `https://localhost/hoge` → 404 JSON response
 
@@ -52,7 +56,12 @@ This project provides a minimal setup for using Laravel 12 as a backend API. It 
    ```sh
    make init
    ```
-3. API にアクセス:
+3. Laravel 初期設定:
+   ```sh
+   make initLaravel
+   ```
+
+4. API にアクセス:
    - `https://localhost/api` → API レスポンス
    - `https://localhost/hoge` → 404 JSON レスポンス
 
