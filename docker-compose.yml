@@ -1,0 +1,56 @@
+services:
+  api:
+    image: nginx:1.23.4
+    container_name: api_laravel_api_docker_sample
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./apps/api:/var/www
+      - ./docker/middleware/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./.certificate:/etc/nginx/ssl
+    depends_on:
+      - php
+      - mysql
+
+  php:
+    build: ./docker/php
+    container_name: php_laravel_api_docker_sample
+    working_dir: /var/www
+    volumes:
+      - ./apps/api:/var/www
+      - ./docker/php/user.ini:/usr/local/etc/php/conf.d/user.ini
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.1
+    platform: linux/x86_64
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/data:/var/lib/mysql
+      - ./docker/db/user.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    container_name: mysql_laravel_api_docker_sample
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    platform: linux/x86_64
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql_laravel_api_docker_sample
+      - PMA_USER=root
+      - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    links:
+      - mysql
+    ports:
+      - 8882:80
+    volumes:
+      - /sessions
+      - ./docker/php/user.ini:/usr/local/etc/php/conf.d/user.ini
+    container_name: phpmyadmin_laravel_api_docker_sample

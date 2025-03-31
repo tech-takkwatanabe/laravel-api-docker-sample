@@ -1,0 +1,5 @@
+[mysqld]
+character_set_server = utf8mb4
+collation_server = utf8mb4_general_ci
+default-time-zone = 'Asia/Tokyo'
+group_concat_max_len=10000
