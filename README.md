@@ -10,6 +10,8 @@ This project provides a minimal setup for using Laravel 12 as a backend API. It 
 - **Excluded view-related packages**: Dependencies such as `laravel/ui` or frontend scaffolding tools are not installed.
 - **Updated `bootstrap/app.php`**: Configured to handle all requests as API responses.
 - **Configured `nginx` for API-only behavior**: Ensured all requests are routed through Laravel.
+- **Configured SSL certificates with `mkcert`**: The project is set up to use HTTPS, so you need to install mkcert to generate local certificates.
+
 
 ### How to Use
 1. Clone the repository:
@@ -19,7 +21,7 @@ This project provides a minimal setup for using Laravel 12 as a backend API. It 
    ```
 2. Start the container:
    ```sh
-   docker-compose up -d
+   make init
    ```
 3. Access the API:
    - `https://localhost/api` → API response
@@ -37,6 +39,8 @@ This project provides a minimal setup for using Laravel 12 as a backend API. It 
 - **ビュー関連パッケージを除外**：`laravel/ui` などのフロントエンド用のパッケージをインストールしていない。
 - **`bootstrap/app.php` の更新**：すべてのリクエストを API レスポンスとして処理するように設定。
 - **`nginx` を API 用に設定**：すべてのリクエストが Laravel に渡るように構成。
+- **SSL証明書を `mkcert` で設定**：HTTPSでの通信を使用する前提で構成しており、ローカル証明書を生成するために mkcert をインストールする必要があります。
+
 
 ### 使用方法
 1. リポジトリをクローン:
@@ -46,7 +50,7 @@ This project provides a minimal setup for using Laravel 12 as a backend API. It 
    ```
 2. コンテナを起動:
    ```sh
-   docker-compose up -d
+   make init
    ```
 3. API にアクセス:
    - `https://localhost/api` → API レスポンス
