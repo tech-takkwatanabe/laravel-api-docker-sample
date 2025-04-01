@@ -10,8 +10,10 @@ This project provides a minimal setup for using Laravel 12 as a backend API. It 
 - **Excluded view-related packages**: Dependencies such as `laravel/ui` or frontend scaffolding tools are not installed.
 - **Updated `bootstrap/app.php`**: Configured to handle all requests as API responses.
 - **Configured `nginx` for API-only behavior**: Ensured all requests are routed through Laravel.
-- **Configured SSL certificates with `mkcert`**: The project is set up to use HTTPS, so you need to install mkcert to generate local certificates.
-
+- **Configured SSL certificates with `mkcert`**: The project is set up to use HTTPS, so you need to install mkcert and run the following command to create a local Certificate Authority (CA):
+   ```sh
+   mkcert -install
+   ```
 
 ### How to Use
 1. Clone the repository:
@@ -43,7 +45,10 @@ This project provides a minimal setup for using Laravel 12 as a backend API. It 
 - **ビュー関連パッケージを除外**：`laravel/ui` などのフロントエンド用のパッケージをインストールしていない。
 - **`bootstrap/app.php` の更新**：すべてのリクエストを API レスポンスとして処理するように設定。
 - **`nginx` を API 用に設定**：すべてのリクエストが Laravel に渡るように構成。
-- **SSL証明書を `mkcert` で設定**：HTTPSでの通信を使用する前提で構成しており、ローカル証明書を生成するために mkcert をインストールする必要があります。
+- **SSL証明書を `mkcert` で設定**：HTTPSでの通信を使用する前提で構成しており、ローカル証明書を生成するために mkcert をインストールし、以下のコマンドで自己認証局を作成しておく必要があります。
+   ```sh
+   mkcert -install
+   ```
 
 
 ### 使用方法
