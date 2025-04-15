@@ -1,7 +1,9 @@
 init:
 	mkdir -p .certificate
 	mkcert -key-file .certificate/localhost-key.pem -cert-file .certificate/localhost-cert.pem localhost 127.0.0.1 ::1
-# if not exist .env copy .env.example .env  # for Windows
+# copy .env for Windows ↓
+# if not exist .env copy .env.example .env  
+# copy .env for Mac ↓
 	[ -f .env ] || cp .env.example .env
 	docker compose build
 	docker compose up -d
